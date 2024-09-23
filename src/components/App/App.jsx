@@ -6,10 +6,9 @@ import Container from "../Container/Container.jsx";
 import Error from "../Error/Error.jsx";
 import ImageGallery from "../ImageGallery/ImageGallery.jsx";
 import SearchHeader from "../SearchHeader/SearchHeader.jsx";
-import { TailSpin } from "react-loader-spinner";
-
-import "./App.css";
 import Wrapper from "../Wrapper/Wrapper.jsx";
+
+import { TailSpin } from "react-loader-spinner";
 
 function App() {
   const PER_PAGE = 12;
