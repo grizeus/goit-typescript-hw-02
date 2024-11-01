@@ -1,6 +1,6 @@
 import toast, { Toaster } from "react-hot-toast";
 
-import Button from "../Button/Button.jsx";
+import Button from "../Button/Button.tsx";
 
 import css from "./SearchBar.module.css";
 

@@ -1,4 +1,4 @@
-import Button from "../Button/Button.jsx";
+import Button from "../Button/Button.tsx";
 
 import css from "./LoadMoreBtn.module.css";
 
