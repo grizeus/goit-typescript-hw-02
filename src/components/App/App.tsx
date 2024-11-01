@@ -1,20 +1,20 @@
 import { lazy, useEffect, useState, Suspense, MouseEvent } from "react";
-import { fetchImages } from "../../api/fetch-api.ts";
+import { fetchImages } from "../../api/fetch-api";
 import ReactModal from "react-modal";
 
-import Container from "../Container/Container.tsx";
-import ErrorMessage from "../ErrorMessage/ErrorMessage.tsx";
-import ImageModal from "../ImageModal/ImageModal.jsx";
-import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn.jsx";
-import Loader from "../Loader/Loader.jsx";
-import Wrapper from "../Wrapper/Wrapper.jsx";
-const SearchBar = lazy(() => import("../SearchBar/SearchBar.jsx"));
-const ImageGallery = lazy(() => import("../ImageGallery/ImageGallery.jsx"));
+import Container from "../Container/Container";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import ImageModal from "../ImageModal/ImageModal";
+import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import Loader from "../Loader/Loader";
+import Wrapper from "../Wrapper/Wrapper";
+const SearchBar = lazy(() => import("../SearchBar/SearchBar"));
+const ImageGallery = lazy(() => import("../ImageGallery/ImageGallery"));
 
 ReactModal.setAppElement("#root");
 
 function App() {
-  const PER_PAGE = 12;
+  const PER_PAGE : number = 12;
 
   const [modalProps, setModalProps] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);

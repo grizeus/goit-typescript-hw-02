@@ -4,7 +4,7 @@ import styles from "./Container.module.css";
 import clsx from "clsx";
 
 type ContainerProps = {
-  children: ReactElement;
+  children?: ReactElement[] | ReactElement;
   isSearch?: boolean;
 };
 

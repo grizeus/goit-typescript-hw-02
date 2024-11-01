@@ -2,7 +2,26 @@ import clsx from "clsx";
 
 import styles from "./ImageCard.module.css";
 
-const ImageCard = ({ id, alt, created, likes, user, urls, modalHandler }) => {
+type URL = {
+  regular: string;
+  small: string;
+};
+
+type User = {
+  name: string;
+};
+
+export type ImageCardProps = {
+  id: string;
+  alt: string;
+  created: string;
+  likes: number;
+  user: User;
+  urls: URL;
+  modalHandler: (arg: string) => (e: React.MouseEvent<HTMLImageElement>) => void;
+};
+
+const ImageCard = ({ id, alt, created, likes, user, urls, modalHandler } : ImageCardProps) => {
   const dateObj = new Date(created);
   const date = dateObj.toLocaleDateString();
   return (
