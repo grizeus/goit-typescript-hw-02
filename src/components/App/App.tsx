@@ -1,8 +1,8 @@
 import { lazy, useEffect, useState, Suspense, MouseEvent } from "react";
-import { fetchImages } from "../../api/fetch-api.js";
+import { fetchImages } from "../../api/fetch-api.ts";
 import ReactModal from "react-modal";
 
-import Container from "../Container/Container.jsx";
+import Container from "../Container/Container.tsx";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import ImageModal from "../ImageModal/ImageModal.jsx";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn.jsx";
