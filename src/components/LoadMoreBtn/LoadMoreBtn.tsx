@@ -1,8 +1,12 @@
-import Button from "../Button/Button.tsx";
+import Button from "../Button/Button";
 
 import css from "./LoadMoreBtn.module.css";
 
-const LoadMoreBtn = ({ handleLoadMore }) => {
+type LoadMoreBtnProps = {
+  handleLoadMore: () => void;
+};
+
+const LoadMoreBtn = ({ handleLoadMore } : LoadMoreBtnProps) => {
   return <Button className={css["load-more-btn"]} handleClick={handleLoadMore}>Load More</Button>;
 };
 

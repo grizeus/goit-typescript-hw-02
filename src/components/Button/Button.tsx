@@ -1,10 +1,10 @@
 import clsx from "clsx";
 
 import styles from "./Button.module.css";
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 
 type ButtonProps = {
-  children: ReactElement;
+  children: ReactNode;
   className: string;
   type?: "button" | "submit" | "reset";
   isSearch?: boolean;
