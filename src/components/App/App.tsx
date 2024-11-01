@@ -3,7 +3,7 @@ import { fetchImages } from "../../api/fetch-api.ts";
 import ReactModal from "react-modal";
 
 import Container from "../Container/Container.tsx";
-import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
+import ErrorMessage from "../ErrorMessage/ErrorMessage.tsx";
 import ImageModal from "../ImageModal/ImageModal.jsx";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn.jsx";
 import Loader from "../Loader/Loader.jsx";
