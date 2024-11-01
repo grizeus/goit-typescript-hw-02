@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState, Suspense } from "react";
+import { lazy, useEffect, useState, Suspense, MouseEvent } from "react";
 import { fetchImages } from "../../api/fetch-api.js";
 import ReactModal from "react-modal";
 
@@ -30,7 +30,7 @@ function App() {
       query === "" ? "Search images" : `Unsplash "${query}" p.${page - 1}`;
   }, [query, page]);
 
-  const handleSetQuery = query => {
+  const handleSetQuery = (query : string) => {
     setQuery(query);
   };
 
@@ -88,10 +88,10 @@ function App() {
     })();
   }, [page, query]);
 
-  const handleModalOpen = regularUrl => e => {
+  const handleModalOpen = (regularUrl: string) => (e: MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
     setIsModalOpen(true);
-    setModalProps({ src: regularUrl, alt: e.target.alt });
+    setModalProps({ src: regularUrl, alt: e.currentTarget.alt });
   };
 
   return (
