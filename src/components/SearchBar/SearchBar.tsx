@@ -10,11 +10,11 @@ type SearchProps = {
 };
 
 const SearchBar = ({ onSearch }: SearchProps ) => {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) : void => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const queryInput = form.querySelector("input") as HTMLInputElement;
-    const query = queryInput?.value.trim();
+    const query : string = queryInput?.value.trim();
 
     if (!query ||query === "") {
       toast.error("Please enter a search query");

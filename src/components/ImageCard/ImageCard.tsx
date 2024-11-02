@@ -1,15 +1,7 @@
 import clsx from "clsx";
 
+import type { URL, User } from "../../types";
 import styles from "./ImageCard.module.css";
-
-type URL = {
-  regular: string;
-  small: string;
-};
-
-type User = {
-  name: string;
-};
 
 export type ImageCardProps = {
   id: string;
@@ -22,8 +14,8 @@ export type ImageCardProps = {
 };
 
 const ImageCard = ({ id, alt, created, likes, user, urls, modalHandler } : ImageCardProps) => {
-  const dateObj = new Date(created);
-  const date = dateObj.toLocaleDateString();
+  const dateObj : Date = new Date(created);
+  const date : string = dateObj.toLocaleDateString("en-US");
   return (
     <div className={styles["gallery-item"]}>
       <div className={styles["img-wrapper"]}>

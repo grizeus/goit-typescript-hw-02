@@ -1,24 +1,20 @@
 import ReactModal from "react-modal";
 
+import type { ImageModalProps } from "../../types";
 import styles from "./ImageModal.module.css";
 
-type ImageModalProps = {
-  props: any;
-  isModalOpen: boolean;
-  setIsModalOpen: (arg0: boolean) => void;
-};
 
 const ImageModal = ({ props, isModalOpen, setIsModalOpen } : ImageModalProps) => {
 
-  const afterOpenModal = () => {
+  const afterOpenModal = () : void => {
     document.body.style.overflow = "hidden";
   };
 
-  const afterCloseModal = () => {
+  const afterCloseModal = () : void => {
     document.body.style.overflow = "auto";
   };
 
-  const handleModalClose = () => {
+  const handleModalClose = () : void => {
     setIsModalOpen(false);
   };
   return (

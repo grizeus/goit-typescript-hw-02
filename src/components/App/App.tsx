@@ -2,6 +2,7 @@ import { lazy, useEffect, useState, Suspense, MouseEvent } from "react";
 import { fetchImages } from "../../api/fetch-api";
 import ReactModal from "react-modal";
 
+import type { Image, ModalProps } from "../../types";
 import Container from "../Container/Container";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import ImageModal from "../ImageModal/ImageModal";
@@ -16,11 +17,11 @@ ReactModal.setAppElement("#root");
 function App() {
   const PER_PAGE : number = 12;
 
-  const [modalProps, setModalProps] = useState({});
+  const [modalProps, setModalProps] = useState({} as ModalProps);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [maxPages, setMaxPages] = useState(0);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(Array<Image>);
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState(false);
   const [query, setQuery] = useState("");
@@ -30,7 +31,7 @@ function App() {
       query === "" ? "Search images" : `Unsplash "${query}" p.${page - 1}`;
   }, [query, page]);
 
-  const handleSetQuery = (query : string) => {
+  const handleSetQuery = (query : string) : void => {
     setQuery(query);
   };
 
