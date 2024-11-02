@@ -1,12 +1,20 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://api.unsplash.com/search/photos";
-const API_KEY = "7QaC31QWQatTvaiGVBFYsWoswGiVg-edIcET13XO0oA";
+import type { Response } from "../types";
 
-axios.defaults.headers.common["Authorization"] = `Client-ID ${API_KEY}`;
-axios.defaults.headers.common["Accept-Version"] = "v1";
+const instance = axios.create(
+  {
+    baseURL: "https://api.unsplash.com/search/photos",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Client-ID 7QaC31QWQatTvaiGVBFYsWoswGiVg-edIcET13XO0oA",
+      "Accept": "application/json",
+      "Accept-Version": "v1",
+    },
+  }
+);
 
-export const fetchImages = async (query: string, page = 1, perPage = 12) => {
+export const fetchImages = async (query: string, page = 1, perPage = 12) : Promise<Response> => {
   const CONFIG = {
     params: {
       query: query,
@@ -15,7 +23,7 @@ export const fetchImages = async (query: string, page = 1, perPage = 12) => {
       content_filter: "low",
     }
   };
-  const res = await axios.get("/", CONFIG);
+  const res = await instance.get<Response>("/", CONFIG);
 
   return res.data;
 };

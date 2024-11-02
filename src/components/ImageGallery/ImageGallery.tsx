@@ -1,24 +1,7 @@
 import ImageCard from "../ImageCard/ImageCard";
 
+import type { Image } from "../../types";
 import styles from "./ImageGallery.module.css";
-
-type URL = {
-  regular: string;
-  small: string;
-};
-
-type User = {
-  name: string;
-};
-
-type Image = {
-  id: string;
-  alt_description: string;
-  created_at: string;
-  likes: number;
-  user: User;
-  urls: URL;
-};
 
 
 type ImageGalleryProps = {

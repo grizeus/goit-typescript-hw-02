@@ -2,6 +2,7 @@ import { lazy, useEffect, useState, Suspense, MouseEvent } from "react";
 import { fetchImages } from "../../api/fetch-api";
 import ReactModal from "react-modal";
 
+import type { Image } from "../../types";
 import Container from "../Container/Container";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import ImageModal from "../ImageModal/ImageModal";
@@ -20,7 +21,7 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [maxPages, setMaxPages] = useState(0);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(Array<Image>);
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState(false);
   const [query, setQuery] = useState("");

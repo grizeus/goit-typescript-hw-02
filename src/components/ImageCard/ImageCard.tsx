@@ -1,15 +1,7 @@
 import clsx from "clsx";
 
+import type { URL, User } from "../../types";
 import styles from "./ImageCard.module.css";
-
-type URL = {
-  regular: string;
-  small: string;
-};
-
-type User = {
-  name: string;
-};
 
 export type ImageCardProps = {
   id: string;
