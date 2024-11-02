@@ -10,7 +10,7 @@ type SearchProps = {
 };
 
 const SearchBar = ({ onSearch }: SearchProps ) => {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) : void => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const queryInput = form.querySelector("input") as HTMLInputElement;

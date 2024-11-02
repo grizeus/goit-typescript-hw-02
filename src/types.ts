@@ -21,3 +21,14 @@ export type Response = {
     total_pages: number;
     results: Array<Image>;
 };
+
+export type ModalProps = {
+  src: string;
+  alt: string;
+}
+
+export type ImageModalProps = {
+  props: ModalProps;
+  isModalOpen: boolean;
+  setIsModalOpen: (arg0: boolean) => void;
+};
