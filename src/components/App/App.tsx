@@ -17,14 +17,14 @@ ReactModal.setAppElement("#root");
 function App() {
   const PER_PAGE : number = 12;
 
-  const [modalProps, setModalProps] = useState({} as ModalProps);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [page, setPage] = useState(1);
-  const [maxPages, setMaxPages] = useState(0);
-  const [images, setImages] = useState(Array<Image>);
-  const [isLoading, setLoading] = useState(false);
-  const [isError, setError] = useState(false);
-  const [query, setQuery] = useState("");
+  const [modalProps, setModalProps] = useState<ModalProps>({} as ModalProps);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [maxPages, setMaxPages] = useState<number>(0);
+  const [images, setImages] = useState<Image[]>([] as Image[]);
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [isError, setError] = useState<boolean>(false);
+  const [query, setQuery] = useState<string>("");
 
   useEffect(() => {
     document.title =
@@ -35,58 +35,57 @@ function App() {
     setQuery(query);
   };
 
-  useEffect(() => {
-    const handleSearch = async () => {
-      try {
-        setImages([]);
-        setPage(1);
-        setError(false);
-        setLoading(true);
-
-        const { total, total_pages, results } = await fetchImages(
-          query,
-          1,
-          PER_PAGE
-        );
-        if (total > 0) {
-          setMaxPages(total_pages);
-          setImages(results);
-        }
-      } catch (err) {
-        setError(true);
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (query !== "") {
-      handleSearch();
-    }
-  }, [query]);
-
   const incrementPage = () => {
     setPage(page + 1);
   };
 
   useEffect(() => {
+    // first render after new search query
     if (page === 1) {
-      return;
-    }
-    (async () => {
-      try {
-        setError(false);
-        setLoading(true);
+      const handleSearch = async (): Promise<void> => {
+        try {
+          setImages([]);
+          setPage(1);
+          setError(false);
+          setLoading(true);
 
-        const { results } = await fetchImages(query, page, PER_PAGE);
-        setImages(prevData => prevData.concat(results));
-      } catch (err) {
-        setError(true);
-        console.error(err);
-      } finally {
-        setLoading(false);
+          const { total, total_pages, results } = await fetchImages(
+            query,
+            1,
+            PER_PAGE
+          );
+          if (total > 0) {
+            setMaxPages(total_pages);
+            setImages(results);
+          }
+        } catch (err) {
+          setError(true);
+          console.error(err);
+        } finally {
+          setLoading(false);
+        }
+      };
+      
+      if (query !== "") {
+        handleSearch();
       }
-    })();
+
+    } else {
+      (async () => {
+        try {
+          setError(false);
+          setLoading(true);
+
+          const { results } = await fetchImages(query, page, PER_PAGE);
+          setImages(prevData => prevData.concat(results));
+        } catch (err) {
+          setError(true);
+          console.error(err);
+        } finally {
+          setLoading(false);
+        }
+      })();
+    }
   }, [page, query]);
 
   const handleModalOpen = (regularUrl: string) => (e: MouseEvent<HTMLImageElement>) => {

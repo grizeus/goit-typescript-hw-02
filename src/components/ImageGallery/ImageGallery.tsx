@@ -14,7 +14,7 @@ const ImageGallery = ({ images, modalHandler } : ImageGalleryProps) => {
     <section>
       <ul className={styles["gallery-list"]}>
         {images.map(
-          ({ id, alt_description, created_at, likes, user, urls }) => (
+          ({ id, alt_description, created_at, likes, user, urls } : Image) => (
             <li key={id}>
               <ImageCard
                 id={id + "1"}
